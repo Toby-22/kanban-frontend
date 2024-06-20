@@ -19,6 +19,8 @@ export class LoginComponent {
       let jsonResp = resp as {token: string};
       localStorage.setItem('token', jsonResp.token);
       console.log(jsonResp.token)
+
+      this.router.navigateByUrl('/board')
     }catch(e){
       console.error(e);
     }

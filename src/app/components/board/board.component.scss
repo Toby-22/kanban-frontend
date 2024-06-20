@@ -1,0 +1,16 @@
+.kanban-card{
+    background-color: white;
+    width: 400px;
+    height: 800px;
+}
+
+.board{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+mat-card-header{
+    border-bottom: 1px solid darkgray;
+}
