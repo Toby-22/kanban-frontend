@@ -1,1 +1,24 @@
-<p>login works!</p>
+<form class="example-form" (ngSubmit)="login()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      placeholder="Name"
+      [(ngModel)]="username"
+      name="username"
+      required
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
+  </mat-form-field>
+  <button mat-flat-button>Basic</button>
+</form>
