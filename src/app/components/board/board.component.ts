@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { enviroment } from '../../../enviroments/enviroments';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { AddDialogComponent } from '../add-dialog/add-dialog.component';
 
-interface Task{
+export interface Task{
     "id": number,
     "title": string,
     "description": string,
@@ -26,6 +28,7 @@ export class BoardComponent implements OnInit{
   inReviewTasks: Task[]= [];
   doneTasks: Task[] = [];
   error = '';
+  dialog = inject(MatDialog)
 
   constructor(private http: HttpClient){}
 
@@ -51,7 +54,7 @@ export class BoardComponent implements OnInit{
     this.doneTasks = this.tasks.filter(task => task.status === 'done');
   }
 
-  // getTasksByStatus(status: string){
-  //   return this.tasks.filter(task => task.status === status)
-  // }
+  addNote(){
+    const dialogRef = this.dialog.open(AddDialogComponent);
+  }
 }
