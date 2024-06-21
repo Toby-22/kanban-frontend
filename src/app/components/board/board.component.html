@@ -9,12 +9,31 @@
     <div class="card-screen">
       <mat-card-content *ngFor="let task of todoTasks" class="task-card">
         <ng-container *ngIf="task.status === 'todo'">
-          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
-          <div>{{ task.title }}</div>
-          <div>{{ task.description }}</div>
-          <div>{{ task.created_at }}</div>
-          <div>{{ task.status }}</div>
-          <div>{{ task.assignee }}</div>
+          <div class="card-header">
+            <p>Id: {{ task.id }}</p>
+            <div class="icons">
+              <mat-icon fontIcon="delete"></mat-icon>
+              <mat-icon fontIcon="edit"></mat-icon>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.title }}</p>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.description }}</p>
+          </div>
+          <div class="card-info">
+            <p>Erstellt:</p>
+            <p class="card-detail">{{ task.created_at }}</p>
+          </div>
+          <div class="card-info">
+            <p>Fälling am:</p>
+            <p class="card-detail">{{ task.due_date }}</p>
+          </div>
+          <div class="card-info">
+            <p>Bearbeiter:</p>
+            <p class="card-detail">{{ task.assignee }}</p>
+          </div>
         </ng-container>
       </mat-card-content>
     </div>
@@ -29,12 +48,31 @@
     <div class="card-screen">
       <mat-card-content *ngFor="let task of inWorkTasks" class="task-card">
         <ng-container *ngIf="task.status === 'inWork'">
-          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
-          <div>{{ task.title }}</div>
-          <div>{{ task.description }}</div>
-          <div>{{ task.created_at }}</div>
-          <div>{{ task.status }}</div>
-          <div>{{ task.assignee }}</div>
+          <div class="card-header">
+            <p>Id: {{ task.id }}</p>
+            <div class="icons">
+              <mat-icon fontIcon="delete"></mat-icon>
+              <mat-icon fontIcon="edit"></mat-icon>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.title }}</p>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.description }}</p>
+          </div>
+          <div class="card-info">
+            <p>Erstellt:</p>
+            <p class="card-detail">{{ task.created_at }}</p>
+          </div>
+          <div class="card-info">
+            <p>Fälling am:</p>
+            <p class="card-detail">{{ task.due_date }}</p>
+          </div>
+          <div class="card-info">
+            <p>Bearbeiter:</p>
+            <p class="card-detail">{{ task.assignee }}</p>
+          </div>
         </ng-container>
       </mat-card-content>
     </div>
@@ -49,12 +87,31 @@
     <div class="card-screen">
       <mat-card-content *ngFor="let task of inReviewTasks" class="task-card">
         <ng-container *ngIf="task.status === 'inReview'">
-          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
-          <div>{{ task.title }}</div>
-          <div>{{ task.description }}</div>
-          <div>{{ task.created_at }}</div>
-          <div>{{ task.status }}</div>
-          <div>{{ task.assignee }}</div>
+          <div class="card-header">
+            <p>Id: {{ task.id }}</p>
+            <div class="icons">
+              <mat-icon fontIcon="delete"></mat-icon>
+              <mat-icon fontIcon="edit"></mat-icon>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.title }}</p>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.description }}</p>
+          </div>
+          <div class="card-info">
+            <p>Erstellt:</p>
+            <p class="card-detail">{{ task.created_at }}</p>
+          </div>
+          <div class="card-info">
+            <p>Fälling am:</p>
+            <p class="card-detail">{{ task.due_date }}</p>
+          </div>
+          <div class="card-info">
+            <p>Bearbeiter:</p>
+            <p class="card-detail">{{ task.assignee }}</p>
+          </div>
         </ng-container>
       </mat-card-content>
     </div>
@@ -69,12 +126,31 @@
     <div class="card-screen">
       <mat-card-content *ngFor="let task of doneTasks" class="task-card">
         <ng-container *ngIf="task.status === 'done'">
-          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
-          <div>{{ task.title }}</div>
-          <div>{{ task.description }}</div>
-          <div>{{ task.created_at }}</div>
-          <div>{{ task.status }}</div>
-          <div>{{ task.assignee }}</div>
+          <div class="card-header">
+            <p>Id: {{ task.id }}</p>
+            <div class="icons">
+              <mat-icon fontIcon="delete"></mat-icon>
+              <mat-icon fontIcon="edit"></mat-icon>
+            </div>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.title }}</p>
+          </div>
+          <div class="card-info">
+            <p class="card-detail">{{ task.description }}</p>
+          </div>
+          <div class="card-info">
+            <p>Erstellt:</p>
+            <p class="card-detail">{{ task.created_at }}</p>
+          </div>
+          <div class="card-info">
+            <p>Fälling am:</p>
+            <p class="card-detail">{{ task.due_date }}</p>
+          </div>
+          <div class="card-info">
+            <p>Bearbeiter:</p>
+            <p class="card-detail">{{ task.assignee }}</p>
+          </div>
         </ng-container>
       </mat-card-content>
     </div>

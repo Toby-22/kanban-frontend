@@ -56,5 +56,9 @@ export class BoardComponent implements OnInit{
 
   addNote(){
     const dialogRef = this.dialog.open(AddDialogComponent);
+
+    dialogRef.afterClosed().subscribe(()=> {
+      window.location.reload();
+    })
   }
 }
