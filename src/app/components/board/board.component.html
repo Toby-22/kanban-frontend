@@ -1,18 +1,82 @@
 <div class="board">
   <mat-card class="kanban-card">
-    <mat-card-header>Todo</mat-card-header>
-    <mat-card-content>Simple card</mat-card-content>
+    <mat-card-header>
+      <h3>Todo</h3>
+      <div>
+        <mat-icon fontIcon="add_circle"></mat-icon>
+      </div>
+    </mat-card-header>
+    <div class="card-screen">
+      <mat-card-content *ngFor="let task of todoTasks" class="task-card">
+        <ng-container *ngIf="task.status === 'todo'">
+          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
+          <div>{{ task.title }}</div>
+          <div>{{ task.description }}</div>
+          <div>{{ task.created_at }}</div>
+          <div>{{ task.status }}</div>
+          <div>{{ task.assignee }}</div>
+        </ng-container>
+      </mat-card-content>
+    </div>
   </mat-card>
   <mat-card class="kanban-card">
-    <mat-card-header>in Work</mat-card-header>
-    <mat-card-content>Simple card</mat-card-content>
+    <mat-card-header>
+      <h3>in Work</h3>
+      <div>
+        <mat-icon fontIcon="add_circle"></mat-icon>
+      </div>
+    </mat-card-header>
+    <div class="card-screen">
+      <mat-card-content *ngFor="let task of inWorkTasks" class="task-card">
+        <ng-container *ngIf="task.status === 'inWork'">
+          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
+          <div>{{ task.title }}</div>
+          <div>{{ task.description }}</div>
+          <div>{{ task.created_at }}</div>
+          <div>{{ task.status }}</div>
+          <div>{{ task.assignee }}</div>
+        </ng-container>
+      </mat-card-content>
+    </div>
   </mat-card>
   <mat-card class="kanban-card">
-    <mat-card-header>in Review</mat-card-header>
-    <mat-card-content>Simple card</mat-card-content>
+    <mat-card-header>
+      <h3>in Review</h3>
+      <div>
+        <mat-icon fontIcon="add_circle"></mat-icon>
+      </div>
+    </mat-card-header>
+    <div class="card-screen">
+      <mat-card-content *ngFor="let task of inReviewTasks" class="task-card">
+        <ng-container *ngIf="task.status === 'inReview'">
+          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
+          <div>{{ task.title }}</div>
+          <div>{{ task.description }}</div>
+          <div>{{ task.created_at }}</div>
+          <div>{{ task.status }}</div>
+          <div>{{ task.assignee }}</div>
+        </ng-container>
+      </mat-card-content>
+    </div>
   </mat-card>
   <mat-card class="kanban-card">
-    <mat-card-header>done</mat-card-header>
-    <mat-card-content>Simple card</mat-card-content>
+    <mat-card-header>
+      <h3>Done</h3>
+      <div>
+        <mat-icon fontIcon="add_circle"></mat-icon>
+      </div>
+    </mat-card-header>
+    <div class="card-screen">
+      <mat-card-content *ngFor="let task of doneTasks" class="task-card">
+        <ng-container *ngIf="task.status === 'done'">
+          <div>{{ task.id }} <mat-icon fontIcon="delete"></mat-icon></div>
+          <div>{{ task.title }}</div>
+          <div>{{ task.description }}</div>
+          <div>{{ task.created_at }}</div>
+          <div>{{ task.status }}</div>
+          <div>{{ task.assignee }}</div>
+        </ng-container>
+      </mat-card-content>
+    </div>
   </mat-card>
 </div>

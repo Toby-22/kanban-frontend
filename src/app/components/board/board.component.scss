@@ -1,16 +1,42 @@
-.kanban-card{
-    background-color: white;
-    width: 400px;
-    height: 800px;
+.kanban-card {
+  background-color: white;
+  width: 400px;
+  height: 800px;
 }
 
-.board{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 40px;
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
 }
 
-mat-card-header{
-    border-bottom: 1px solid darkgray;
+mat-card-header {
+  border-bottom: 1px solid darkgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  background-color: lightyellow;
+  width: 250px;
+  height: 200px;
+  margin: 50px;
+  border-radius: 10px;
+}
+
+.card-screen {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+mat-icon{
+    cursor: pointer;
+
+    &:hover{
+        color: rgb(71, 71, 71);
+    }
 }
