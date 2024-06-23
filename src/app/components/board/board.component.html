@@ -13,7 +13,7 @@
             <p>Id: {{ task.id }}</p>
             <div class="icons">
               <mat-icon fontIcon="delete"></mat-icon>
-              <mat-icon fontIcon="edit"></mat-icon>
+              <mat-icon fontIcon="edit" (click)="editTask(task.id)"></mat-icon>
             </div>
           </div>
           <div class="card-info">

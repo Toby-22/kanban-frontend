@@ -24,13 +24,15 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
+import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BoardComponent,
-    AddDialogComponent
+    AddDialogComponent,
+    EditDialogComponent
   ],
   imports: [
     BrowserModule,

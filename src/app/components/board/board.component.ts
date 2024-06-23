@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDialogComponent } from '../add-dialog/add-dialog.component';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 export interface Task{
     "id": number,
@@ -59,6 +60,14 @@ export class BoardComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe(()=> {
       window.location.reload();
-    })
+    });
+  }
+
+  editTask(id: number){
+    const dialogRef = this.dialog.open(EditDialogComponent, {data: {id: id}});
+
+    dialogRef.afterClosed().subscribe(()=> {
+      window.location.reload();
+    });
   }
 }
