@@ -22,7 +22,8 @@ export interface Contact{
   "first_name": string,
   "last_name": string,
   "email": string,
-  "job_position": string
+  "job_position": string,
+  "id": number,
 }
 
 @Component({

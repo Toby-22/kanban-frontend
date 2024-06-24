@@ -12,7 +12,12 @@
       <input matInput placeholder="Fälligkeits Datum" formControlName="due_date" type="date" />
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Bearbeiter" formControlName="assignee" type="text" />
+      <mat-label>Bearbeiter</mat-label>
+      <mat-select formControlName="assignee">
+        <mat-option *ngFor="let contact of contacts" [value]="contact.id">
+          {{ contact.last_name }}, {{contact.first_name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Status</mat-label>

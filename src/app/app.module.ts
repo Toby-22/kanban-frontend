@@ -27,6 +27,7 @@ import {
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AddContactComponent } from './components/add-contact/add-contact.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AddContactComponent } from './components/add-contact/add-contact.compon
     MatDialogActions,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatSelectModule,
   ],
   providers: [
     provideAnimationsAsync(),

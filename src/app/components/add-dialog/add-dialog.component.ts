@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { BoardComponent, Task } from '../board/board.component';
+import { BoardComponent, Contact, Task } from '../board/board.component';
 import { enviroment } from '../../../enviroments/enviroments';
 import { HttpClient } from '@angular/common/http';
+import { lastValueFrom } from 'rxjs';
 
 
 
@@ -23,7 +24,10 @@ export class AddDialogComponent implements OnInit {
     private http: HttpClient,
   ) {}
 
+  contacts!: Contact[];
+
   ngOnInit(): void {
+    this.loadContacts();
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -53,6 +57,16 @@ export class AddDialogComponent implements OnInit {
       );
     } else {
       console.log('Form is not valid'); 
+    }
+  }
+
+  async loadContacts(): Promise<void> {
+    try {
+      const url = `${enviroment.apiUrl}/contact/`;
+      this.contacts = await lastValueFrom(this.http.get<Contact[]>(url));
+      console.log(this.contacts)
+    } catch (error) {
+      console.error('Fehler beim Laden der Kontakte:', error);
     }
   }
 }
