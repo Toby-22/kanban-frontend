@@ -70,4 +70,19 @@ export class BoardComponent implements OnInit{
       window.location.reload();
     });
   }
+
+  deleteTask(id: number) {
+    const url = `${enviroment.apiUrl}/tasks/${id}`;
+    this.http.delete(url).subscribe({
+      next: () => {
+        console.log('Task deleted successfully');
+        this.loadTasks();
+        window.location.reload();
+      },
+      error: (error) => {
+        console.error('Error deleting task: ', error);
+        this.error = 'Fehler beim Löschen der Aufgabe';
+      }
+    });
+  }
 }

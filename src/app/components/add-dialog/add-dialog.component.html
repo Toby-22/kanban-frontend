@@ -8,12 +8,14 @@
       <input matInput placeholder="Beschreibung" formControlName="description" type="text" />
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Due Date</mat-label>
       <input matInput placeholder="Fälligkeits Datum" formControlName="due_date" type="date" />
     </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Bearbeiter" formControlName="assignee" type="text" />
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Status</mat-label>
       <select matNativeControl formControlName="status" required placeholder="Status">
         <option value="todo">Todo</option>
         <option value="inWork">in Work</option>

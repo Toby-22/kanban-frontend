@@ -1,5 +1,5 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Task } from '../board/board.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -13,9 +13,9 @@ interface DialogData {
 @Component({
   selector: 'app-edit-dialog',
   templateUrl: './edit-dialog.component.html',
-  styleUrl: './edit-dialog.component.scss',
+  styleUrls: ['./edit-dialog.component.scss'],
 })
-export class EditDialogComponent {
+export class EditDialogComponent implements OnInit {
   taskForm!: FormGroup;
   task!: Task;
 
@@ -26,20 +26,15 @@ export class EditDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {}
 
-
-
-  ngOnInit(): void {
-    const url = enviroment.apiUrl + `/tasks/${this.data.id}/`;
-    this.http.get<Task>(url).subscribe({
-      next: (task) => {
-        this.task = task;
-        console.log(this.task); 
-        this.initializeForm();
-      },
-      error: (error) => {
-        console.error('Fehler beim Laden der Aufgabe', error);
-      }
-    });
+  async ngOnInit(): Promise<void> {
+    try {
+      const url = `${enviroment.apiUrl}/tasks/${this.data.id}/`;
+      this.task = await lastValueFrom(this.http.get<Task>(url));
+      console.log(this.task); 
+      this.initializeForm();
+    } catch (error) {
+      console.error('Fehler beim Laden der Aufgabe', error);
+    }
   }
 
   initializeForm(): void {
@@ -57,6 +52,21 @@ export class EditDialogComponent {
   }
 
   editTask() {
-    this.dialogRef.close(true);
+    if (this.taskForm.valid) {
+      const updatedTask: Task = { ...this.task, ...this.taskForm.value };
+      const url = `${enviroment.apiUrl}/tasks/${this.data.id}/`;
+
+      this.http.put<Task>(url, updatedTask).subscribe({
+        next: (response) => {
+          console.log('Task updated successfully: ', response);
+          this.dialogRef.close(response);
+        },
+        error: (error) => {
+          console.error('Error updating task: ', error);
+        }
+      });
+    } else {
+      console.log('Form is not valid'); 
+    }
   }
 }
