@@ -25,6 +25,8 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { EditDialogComponent } from './components/edit-dialog/edit-dialog.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AddContactComponent } from './components/add-contact/add-contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     LoginComponent,
     BoardComponent,
     AddDialogComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    AddContactComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { EditDialogComponent } from './components/edit-dialog/edit-dialog.compon
     MatDialogContent,
     MatDialogActions,
     ReactiveFormsModule,
+    MatToolbarModule,
   ],
   providers: [
     provideAnimationsAsync(),

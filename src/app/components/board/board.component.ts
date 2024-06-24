@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { AddDialogComponent } from '../add-dialog/add-dialog.component';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { AddContactComponent } from '../add-contact/add-contact.component';
 
 export interface Task{
     "id": number,
@@ -15,6 +16,13 @@ export interface Task{
     "status": string,
     "category": string,
     "assignee": number
+}
+
+export interface Contact{
+  "first_name": string,
+  "last_name": string,
+  "email": string,
+  "job_position": string
 }
 
 @Component({
@@ -84,5 +92,9 @@ export class BoardComponent implements OnInit{
         this.error = 'Fehler beim Löschen der Aufgabe';
       }
     });
+  }
+
+  addContact(){
+    const dialogRef = this.dialog.open(AddContactComponent);
   }
 }
