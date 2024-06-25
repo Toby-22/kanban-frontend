@@ -16,7 +16,10 @@
           <div class="card-header">
             <p>Id: {{ task.id }}</p>
             <div class="icons">
-              <mat-icon fontIcon="delete" (click)="deleteTask(task.id)"></mat-icon>
+              <mat-icon
+                fontIcon="delete"
+                (click)="deleteTask(task.id)"
+              ></mat-icon>
               <mat-icon fontIcon="edit" (click)="editTask(task.id)"></mat-icon>
             </div>
           </div>
@@ -36,7 +39,11 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <p class="card-detail">{{ task.assignee }}</p>
+            <ng-container *ngFor="let contact of contacts">
+              <p class="card-detail" *ngIf="contact.id === task.assignee">
+                {{ contact.last_name }} {{ contact.first_name }}
+              </p>
+            </ng-container>
           </div>
         </ng-container>
       </mat-card-content>
@@ -55,8 +62,11 @@
           <div class="card-header">
             <p>Id: {{ task.id }}</p>
             <div class="icons">
-              <mat-icon fontIcon="delete"></mat-icon>
-              <mat-icon fontIcon="edit"></mat-icon>
+              <mat-icon
+                fontIcon="delete"
+                (click)="deleteTask(task.id)"
+              ></mat-icon>
+              <mat-icon fontIcon="edit" (click)="editTask(task.id)"></mat-icon>
             </div>
           </div>
           <div class="card-info">
@@ -75,7 +85,11 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <p class="card-detail">{{ task.assignee }}</p>
+            <ng-container *ngFor="let contact of contacts">
+              <p class="card-detail" *ngIf="contact.id === task.assignee">
+                {{ contact.last_name }} {{ contact.first_name }}
+              </p>
+            </ng-container>
           </div>
         </ng-container>
       </mat-card-content>
@@ -94,8 +108,11 @@
           <div class="card-header">
             <p>Id: {{ task.id }}</p>
             <div class="icons">
-              <mat-icon fontIcon="delete"></mat-icon>
-              <mat-icon fontIcon="edit"></mat-icon>
+              <mat-icon
+                fontIcon="delete"
+                (click)="deleteTask(task.id)"
+              ></mat-icon>
+              <mat-icon fontIcon="edit" (click)="editTask(task.id)"></mat-icon>
             </div>
           </div>
           <div class="card-info">
@@ -114,7 +131,11 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <p class="card-detail">{{ task.assignee }}</p>
+            <ng-container *ngFor="let contact of contacts">
+              <p class="card-detail" *ngIf="contact.id === task.assignee">
+                {{ contact.last_name }} {{ contact.first_name }}
+              </p>
+            </ng-container>
           </div>
         </ng-container>
       </mat-card-content>
@@ -133,8 +154,11 @@
           <div class="card-header">
             <p>Id: {{ task.id }}</p>
             <div class="icons">
-              <mat-icon fontIcon="delete"></mat-icon>
-              <mat-icon fontIcon="edit"></mat-icon>
+              <mat-icon
+                fontIcon="delete"
+                (click)="deleteTask(task.id)"
+              ></mat-icon>
+              <mat-icon fontIcon="edit" (click)="editTask(task.id)"></mat-icon>
             </div>
           </div>
           <div class="card-info">
@@ -153,7 +177,11 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <p class="card-detail">{{ task.assignee }}</p>
+            <ng-container *ngFor="let contact of contacts">
+              <p class="card-detail" *ngIf="contact.id === task.assignee">
+                {{ contact.last_name }} {{ contact.first_name }}
+              </p>
+            </ng-container>
           </div>
         </ng-container>
       </mat-card-content>

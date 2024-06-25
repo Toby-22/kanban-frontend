@@ -38,13 +38,15 @@ export class BoardComponent implements OnInit{
   inReviewTasks: Task[]= [];
   doneTasks: Task[] = [];
   error = '';
-  dialog = inject(MatDialog)
+  dialog = inject(MatDialog);
+  contacts: Contact[] = [];
 
   constructor(private http: HttpClient){}
 
   async ngOnInit() {
       try{
         this.tasks = await this.loadTasks();
+        this.loadContacts();
         console.log(this.tasks);
         this.filterTasks();
       }catch(e){
@@ -56,6 +58,7 @@ export class BoardComponent implements OnInit{
     const url = enviroment.apiUrl + '/tasks/';
     return lastValueFrom(this.http.get<Task[]>(url));
   }
+
 
   filterTasks() {
     this.todoTasks = this.tasks.filter(task => task.status === 'todo');
@@ -97,5 +100,15 @@ export class BoardComponent implements OnInit{
 
   addContact(){
     const dialogRef = this.dialog.open(AddContactComponent);
+  }
+
+  async loadContacts(): Promise<void> {
+    try {
+      const url = `${enviroment.apiUrl}/contact/`;
+      this.contacts = await lastValueFrom(this.http.get<Contact[]>(url));
+      console.log(this.contacts)
+    } catch (error) {
+      console.error('Fehler beim Laden der Kontakte:', error);
+    }
   }
 }
