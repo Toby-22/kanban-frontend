@@ -1,6 +1,6 @@
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Task } from '../board/board.component';
+import { Contact, Task } from '../board/board.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { enviroment } from '../../../enviroments/enviroments';
@@ -18,6 +18,7 @@ interface DialogData {
 export class EditDialogComponent implements OnInit {
   taskForm!: FormGroup;
   task!: Task;
+  contacts: Contact[] = []
 
   constructor(
     private dialogRef: MatDialogRef<EditDialogComponent>,
@@ -31,6 +32,7 @@ export class EditDialogComponent implements OnInit {
       const url = `${enviroment.apiUrl}/tasks/${this.data.id}/`;
       this.task = await lastValueFrom(this.http.get<Task>(url));
       console.log(this.task); 
+      this.loadContacts();
       this.initializeForm();
     } catch (error) {
       console.error('Fehler beim Laden der Aufgabe', error);
@@ -67,6 +69,16 @@ export class EditDialogComponent implements OnInit {
       });
     } else {
       console.log('Form is not valid'); 
+    }
+  }
+
+  async loadContacts(): Promise<void> {
+    try {
+      const url = `${enviroment.apiUrl}/contact/`;
+      this.contacts = await lastValueFrom(this.http.get<Contact[]>(url));
+      console.log(this.contacts)
+    } catch (error) {
+      console.error('Fehler beim Laden der Kontakte:', error);
     }
   }
 }
