@@ -6,3 +6,13 @@ form{
     padding: 100px;
     background-color: #EBEBEB;
 }
+
+.registrate{
+    cursor: pointer;
+    padding-top: 20px;
+
+    &:hover{
+        color: darkblue;
+        font-weight: bold;
+    }
+}

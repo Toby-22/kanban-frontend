@@ -1,6 +1,5 @@
 <mat-toolbar>
   <span>My Scrum Board</span>
-  <mat-icon (click)="addContact()">person_add</mat-icon>
 </mat-toolbar>
 <div class="board">
   <mat-card class="kanban-card">
@@ -39,8 +38,8 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <ng-container *ngFor="let contact of contacts">
-              <p class="card-detail" *ngIf="contact.id === task.assignee">
+            <ng-container *ngFor="let contact of users">
+              <p class="card-detail" *ngIf="contact.username === task.assignee">
                 {{ contact.last_name }} {{ contact.first_name }}
               </p>
             </ng-container>
@@ -85,8 +84,8 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <ng-container *ngFor="let contact of contacts">
-              <p class="card-detail" *ngIf="contact.id === task.assignee">
+            <ng-container *ngFor="let contact of users">
+              <p class="card-detail" *ngIf="contact.username === task.assignee">
                 {{ contact.last_name }} {{ contact.first_name }}
               </p>
             </ng-container>
@@ -131,8 +130,8 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <ng-container *ngFor="let contact of contacts">
-              <p class="card-detail" *ngIf="contact.id === task.assignee">
+            <ng-container *ngFor="let contact of users">
+              <p class="card-detail" *ngIf="contact.username === task.assignee">
                 {{ contact.last_name }} {{ contact.first_name }}
               </p>
             </ng-container>
@@ -177,8 +176,8 @@
           </div>
           <div class="card-info">
             <p>Bearbeiter:</p>
-            <ng-container *ngFor="let contact of contacts">
-              <p class="card-detail" *ngIf="contact.id === task.assignee">
+            <ng-container *ngFor="let contact of users">
+              <p class="card-detail" *ngIf="contact.username === task.assignee">
                 {{ contact.last_name }} {{ contact.first_name }}
               </p>
             </ng-container>

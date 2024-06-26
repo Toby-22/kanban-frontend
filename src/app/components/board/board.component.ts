@@ -15,15 +15,15 @@ export interface Task{
     "due_date": Date,
     "status": string,
     "category": string,
-    "assignee": number
+    "assignee": string
 }
 
-export interface Contact{
+export interface User {
+  "id": number,
+  "username": string,
+  "email": string,
   "first_name": string,
   "last_name": string,
-  "email": string,
-  "job_position": string,
-  "id": number,
 }
 
 @Component({
@@ -39,14 +39,14 @@ export class BoardComponent implements OnInit{
   doneTasks: Task[] = [];
   error = '';
   dialog = inject(MatDialog);
-  contacts: Contact[] = [];
+  users: User[] = [];
 
   constructor(private http: HttpClient){}
 
   async ngOnInit() {
       try{
         this.tasks = await this.loadTasks();
-        this.loadContacts();
+        this.loadUsers();
         console.log(this.tasks);
         this.filterTasks();
       }catch(e){
@@ -98,17 +98,13 @@ export class BoardComponent implements OnInit{
     });
   }
 
-  addContact(){
-    const dialogRef = this.dialog.open(AddContactComponent);
-  }
-
-  async loadContacts(): Promise<void> {
+  async loadUsers(): Promise<void> {
     try {
-      const url = `${enviroment.apiUrl}/contact/`;
-      this.contacts = await lastValueFrom(this.http.get<Contact[]>(url));
-      console.log(this.contacts)
+      const url = `${enviroment.apiUrl}/users/`;
+      this.users = await lastValueFrom(this.http.get<User[]>(url));
+      console.log(this.users);
     } catch (error) {
-      console.error('Fehler beim Laden der Kontakte:', error);
+      console.error('Fehler beim Laden der Benutzer:', error);
     }
   }
 }

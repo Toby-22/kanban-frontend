@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { BoardComponent, Contact, Task } from '../board/board.component';
+import { BoardComponent, Task, User } from '../board/board.component';
 import { enviroment } from '../../../enviroments/enviroments';
 import { HttpClient } from '@angular/common/http';
 import { lastValueFrom } from 'rxjs';
@@ -24,10 +24,10 @@ export class AddDialogComponent implements OnInit {
     private http: HttpClient,
   ) {}
 
-  contacts!: Contact[];
+  users!: User[];
 
   ngOnInit(): void {
-    this.loadContacts();
+    this.loadUsers();
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
@@ -44,6 +44,7 @@ export class AddDialogComponent implements OnInit {
   saveTask(): void {
     if (this.taskForm.valid) {
       const task: Task = this.taskForm.value;
+      console.log(task);
       const url = enviroment.apiUrl + '/tasks/';
       
       this.http.post<Task>(url, task).subscribe(
@@ -60,13 +61,13 @@ export class AddDialogComponent implements OnInit {
     }
   }
 
-  async loadContacts(): Promise<void> {
+  async loadUsers(): Promise<void> {
     try {
-      const url = `${enviroment.apiUrl}/contact/`;
-      this.contacts = await lastValueFrom(this.http.get<Contact[]>(url));
-      console.log(this.contacts)
+      const url = `${enviroment.apiUrl}/users/`;
+      this.users = await lastValueFrom(this.http.get<User[]>(url));
+      console.log(this.users);
     } catch (error) {
-      console.error('Fehler beim Laden der Kontakte:', error);
+      console.error('Fehler beim Laden der Benutzer:', error);
     }
   }
 }

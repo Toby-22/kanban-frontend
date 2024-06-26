@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BoardComponent, Contact } from '../board/board.component';
+import { BoardComponent, User } from '../board/board.component';
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef } from '@angular/material/dialog';
 import { enviroment } from '../../../enviroments/enviroments';
@@ -11,7 +11,7 @@ import { enviroment } from '../../../enviroments/enviroments';
   styleUrl: './add-contact.component.scss'
 })
 export class AddContactComponent implements OnInit{
-  contactForm!: FormGroup;
+  userForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -21,11 +21,12 @@ export class AddContactComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.contactForm = this.fb.group({
+    this.userForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', Validators.required],
-      job_position: ['', Validators.required],
     });
   }
 
@@ -33,22 +34,22 @@ export class AddContactComponent implements OnInit{
     this.dialogRef.close();
   }
 
-  saveContact(): void {
-    if (this.contactForm) {
-      const contact: Contact = this.contactForm.value;
-      const url = enviroment.apiUrl + '/contact/';
-      
-      this.http.post<Contact>(url, contact).subscribe(
+  saveUser(): void {
+    if (this.userForm.valid) {
+      const user: User = this.userForm.value;
+      const url = enviroment.apiUrl + '/register/';
+
+      this.http.post<User>(url, user).subscribe(
         (response) => {
-          console.log('Contact created successfully: ', response);
+          console.log('User created successfully: ', response);
           this.dialogRef.close(response);
         },
         (error) => {
-          console.error('Error creating contact: ', error);
+          console.error('Error creating user: ', error);
         }
       );
     } else {
-      console.log('Form is not valid'); 
+      console.log('Form is not valid');
     }
   }
 }

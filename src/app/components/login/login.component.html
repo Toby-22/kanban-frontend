@@ -1,9 +1,9 @@
 <form class="example-form" (ngSubmit)="login()">
   <mat-form-field class="example-full-width">
-    <mat-label>Name</mat-label>
+    <mat-label>Benutzername</mat-label>
     <input
       matInput
-      placeholder="Name"
+      placeholder="Benutzername"
       [(ngModel)]="username"
       name="username"
       required
@@ -20,5 +20,6 @@
       required
     />
   </mat-form-field>
-  <button mat-flat-button>Basic</button>
+  <button mat-flat-button>Login</button>
+  <span class="registrate" (click)="addContact()">Registrieren</span>
 </form>

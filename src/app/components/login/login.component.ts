@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { AddContactComponent } from '../add-contact/add-contact.component';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   constructor(private as:AuthService, private router: Router){}
-
+  dialog = inject(MatDialog);
   username: string = "";
   password: string = "";
 
@@ -24,5 +26,9 @@ export class LoginComponent {
     }catch(e){
       console.error(e);
     }
+  }
+
+  addContact(){
+    const dialogRef = this.dialog.open(AddContactComponent);
   }
 }

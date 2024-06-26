@@ -14,7 +14,7 @@
     <mat-form-field>
       <mat-label>Bearbeiter</mat-label>
       <mat-select formControlName="assignee">
-        <mat-option *ngFor="let contact of contacts" [value]="contact.id">
+        <mat-option *ngFor="let contact of users" [value]="contact.username">
           {{ contact.last_name }}, {{contact.first_name}}
         </mat-option>
       </mat-select>
